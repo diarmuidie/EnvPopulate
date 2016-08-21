@@ -32,7 +32,8 @@ class Env implements FileInterface
         return $this->envValues;
     }
 
-    public function setVariable($name, $value) {
+    public function setVariable($name, $value)
+    {
         $this->envValues[$name] = $value;
     }
 
@@ -60,11 +61,9 @@ class Env implements FileInterface
             return ($value) ? 'true' : 'false';
         }
 
-        if (
-            is_int($value) ||
-            (substr($value, 0, 1) == '"' && substr($value, -1) == '"') ||
-            (substr($value, 0, 1) == "'" && substr($value, -1) == "'")
-        ){
+        if (is_int($value)
+            || (substr($value, 0, 1) == '"' && substr($value, -1) == '"')
+            || (substr($value, 0, 1) == "'" && substr($value, -1) == "'")) {
             return $value;
         }
 

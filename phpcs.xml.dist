@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="PHP_CodeSniffer">
+    <file>./src</file>
+
+    <arg name="extensions" value="php" />
+    <arg name="colors"/>
+    <arg value="ps"/>
+
+    <rule ref="PSR2"/>
+</ruleset>

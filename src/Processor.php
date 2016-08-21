@@ -29,7 +29,7 @@ class Processor
         $this->processConfig($config);
         $this->loadFiles();
         $unsetValues = $this->findUnsetValues();
-        if (!empty($unsetValues)){
+        if (!empty($unsetValues)) {
             $this->askForUnsetValues($unsetValues);
             $this->saveFile();
         }
@@ -107,7 +107,7 @@ class Processor
 
     protected function convertToString($value)
     {
-        if(is_bool($value)) {
+        if (is_bool($value)) {
             $value = ($value) ? 'true' : 'false';
         }
         return (string) $value;
