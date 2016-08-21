@@ -1,7 +1,7 @@
 /vendor/
 /coverage/
-composer.lock
+/composer.lock
 
-/examples/composer.json
+/examples/composer.lock
 /examples/vendor/
-examples/.env
+/examples/.env
