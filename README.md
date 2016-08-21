@@ -1,7 +1,7 @@
 diarmuidie/envpopulate
 =============
 
-PHP tool to interactively populate a `.env` file based on an `example.env` file whenever Composer installs or updates.
+PHP tool to interactively populate a `.env` file based on an `.env.example` file whenever Composer installs or updates.
 
 Based on the similar package [Incenteev/ParameterHandler](https://github.com/Incenteev/ParameterHandler). Go check that out if you need to save  parameters to a YAML file instead of a env file :+1:.
 
@@ -50,7 +50,7 @@ If you want to change the location of the example or generated env file you can 
 Usage
 -----
 
-Make sure you have an `example.env` file in the root of your project (or in a different location by [setting the extra options](#optional).
+Make sure you have an `.env.example` file in the root of your project (or in a different location by [setting the extra options](#optional).
 
 The script will run every time you do a `composer install` or `composer update`. Press enter to accept the default value or type to overwrite it.
 
