@@ -37,10 +37,11 @@ class ProcessorTest extends TestCase
 
     public function testThrowsExceptionForMissingExampleFile()
     {
-        $this->fileFactory->method('create')
-            ->willReturn($this->file);
         $this->file->method('fileExists')
             ->willReturn(false);
+
+        $this->fileFactory->method('create')
+            ->willReturn($this->file);
 
         $this->expectException(InvalidArgumentException::class);
 
@@ -55,15 +56,54 @@ class ProcessorTest extends TestCase
             'VALUE_2' => 'true'
         );
 
-        $this->fileFactory->method('create')
-            ->willReturn($this->file);
         $this->file->method('fileExists')
             ->willReturn(true);
         $this->file->method('getVariables')
             ->willReturn($exampleValues);
 
+        $this->fileFactory->method('create')
+            ->willReturn($this->file);
+
         $this->composerIO->expects($this->never())
             ->method('write');
+
+        $processor = new Processor($this->composerIO, $this->fileFactory);
+        $processor->processFile(array());
+    }
+
+    public function testAsksForValueIfValueNeedsToBeUpdated()
+    {
+
+        $exampleFile = $this->file;
+
+        $exampleFile->expects($this->once())
+            ->method('fileExists')
+            ->willReturn(true);
+        $exampleFile->method('getVariables')
+            ->willReturn(array('VALUE_1' => true));
+
+        $generatedFile = $this->getMockBuilder(Env::class)
+            ->setConstructorArgs(array('file.env'))
+            ->getMock();
+        $generatedFile->expects($this->once())
+            ->method('fileExists')
+            ->willReturn(false);
+        $generatedFile->method('getVariables')
+            ->willReturn(array());
+        $generatedFile->expects($this->once())
+            ->method('save');
+
+        $this->fileFactory->method('create')
+            ->will($this->onConsecutiveCalls($exampleFile, $generatedFile));
+
+        $this->composerIO
+            ->method('isInteractive')
+            ->willReturn(true);
+        $this->composerIO->expects($this->once())
+            ->method('write');
+        $this->composerIO->expects($this->once())
+            ->method('ask')
+            ->with($this->equalTo('<question>VALUE_1</question> (<comment>true</comment>): '));
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());

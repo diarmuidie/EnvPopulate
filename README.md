@@ -61,7 +61,7 @@ See it in action:
 
 To Do
 ---------
-- [ ] Increase test coverage
+- [x] Increase test coverage.
 
 Contributing
 ---------
