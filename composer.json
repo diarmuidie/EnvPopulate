@@ -1,8 +1,8 @@
 {
     "name": "diarmuidie/envpopulate",
-    "description": "Tool to interactively generate a `.env` file from an `example.env` file on Composer install and update.",
+    "description": "Tool to interactively populate a `.env` file based on an `example.env` file whenever Composer installs or updates.",
     "type": "library",
-    "keywords": ["parameters management", "dotenv", "env", ".env"],
+    "keywords": ["parameters management", "dotenv", "env", ".env", "environment"],
     "require": {
         "php": ">=5.4",
         "m1/env": "^2.0"

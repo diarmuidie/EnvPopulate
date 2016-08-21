@@ -1,11 +1,11 @@
 diarmuidie/envpopulate
 =============
 
-PHP tool to interactively generate a `.env` file from an `example.env` file on Composer install and update.
+PHP tool to interactively populate a `.env` file based on an `example.env` file whenever Composer installs or updates.
+
+Based on the similar package [Incenteev/ParameterHandler](https://github.com/Incenteev/ParameterHandler). Go check that out if you need to save  parameters to a YAML file instead of a env file :+1:.
 
 Developed by [Diarmuid](https://diarmuid.ie/).
-
-Based on the similar package [Incenteev/ParameterHandler](https://github.com/Incenteev/ParameterHandler) that works on YAML files.
 
 [![Latest Stable Version](https://poser.pugx.org/diarmuidie/envpopulate/v/stable)](https://packagist.org/packages/diarmuidie/envpopulate)
 [![License](https://poser.pugx.org/diarmuidie/envpopulate/license)](https://packagist.org/packages/diarmuidie/envpopulate)
