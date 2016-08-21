@@ -50,7 +50,7 @@ If you want to change the location of the example or generated env file you can 
 Usage
 -----
 
-Make sure you have an `example.env` file in the root of your project (or in a different location by setting the extra options).
+Make sure you have an `example.env` file in the root of your project (or in a different location by [setting the extra options](#optional).
 
 The script will run every time you do a `composer install` or `composer update`. Press enter to accept the default value or type to overwrite it.
 
