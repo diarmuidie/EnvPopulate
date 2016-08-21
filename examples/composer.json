@@ -1,0 +1,19 @@
+{
+    "require": {
+        "diarmuidie/envpopulate": "^1.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Diarmuidie\\EnvPopulate\\ScriptHandler::populateEnv"
+        ],
+        "post-update-cmd": [
+            "Diarmuidie\\EnvPopulate\\ScriptHandler::populateEnv"
+        ]
+    },
+    "extra": {
+        "env-process": {
+            "example-file": ".env.dist",
+            "generated-file": ".env"
+        }
+    }
+}

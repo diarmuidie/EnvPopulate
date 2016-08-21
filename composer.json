@@ -1,0 +1,26 @@
+{
+    "name": "diarmuidie/envpopulate",
+    "description": "Interactive .env file generation",
+    "type": "library",
+    "require": {
+        "php": ">=5.4",
+        "m1/env": "^2.0"
+    },
+    "require-dev": {
+        "composer/composer": "^1.2",
+        "phpunit/phpunit": "^5.5",
+        "squizlabs/php_codesniffer": "^2.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Diarmuid",
+            "email": "contact@diarmuid.ie"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Diarmuidie\\EnvPopulate\\": "src/"
+        }
+    }
+}
