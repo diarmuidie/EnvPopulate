@@ -61,12 +61,16 @@ class Env implements FileInterface
             return ($value) ? 'true' : 'false';
         }
 
-        if (is_int($value)
-            || (substr($value, 0, 1) == '"' && substr($value, -1) == '"')
-            || (substr($value, 0, 1) == "'" && substr($value, -1) == "'")) {
+        if ($value === 'true' || $value === 'false') {
             return $value;
         }
 
-        return '"' . $value . '"';
+        if (is_int($value)) {
+            return $value;
+        }
+
+        $singelAndDoubleQuotes = '"\'';
+
+        return '"' . trim($value, $singelAndDoubleQuotes) . '"';
     }
 }

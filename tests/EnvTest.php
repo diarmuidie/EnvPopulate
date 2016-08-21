@@ -62,8 +62,11 @@ class EnvTest extends TestCase
         return [
             [true, 'true'],
             [false, 'false'],
+            ['true', 'true'],
+            ['false', 'false'],
             [123, 123],
             ["string", '"string"'],
+            ['string', '"string"'],
             [1.234, '"1.234"']
         ];
     }
