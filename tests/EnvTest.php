@@ -70,5 +70,4 @@ class EnvTest extends TestCase
             [1.234, '"1.234"']
         ];
     }
-
 }

@@ -68,5 +68,4 @@ class ProcessorTest extends TestCase
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());
     }
-
 }
