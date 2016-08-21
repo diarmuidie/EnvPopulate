@@ -1,13 +1,13 @@
 {
     "name": "diarmuidie/envpopulate",
-    "description": "Interactive .env file generation",
+    "description": "Tool to interactively generate a `.env` file from an `example.env` file on Composer install and update.",
     "type": "library",
+    "keywords": ["parameters management", "dotenv", "env", ".env"],
     "require": {
         "php": ">=5.4",
         "m1/env": "^2.0"
     },
     "require-dev": {
-        "composer/composer": "^1.2",
         "phpunit/phpunit": "^5.5",
         "squizlabs/php_codesniffer": "^2.6"
     },
