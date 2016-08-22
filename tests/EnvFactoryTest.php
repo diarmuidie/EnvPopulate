@@ -14,6 +14,6 @@ class EnvFactoryTest extends PHPUnit_Framework_TestCase
 
         $file = $factory->create('filename.txt');
 
-        $this->assertInstanceOf(Env::class, $file);
+        $this->assertInstanceOf('Diarmuidie\EnvPopulate\File\Env', $file);
     }
 }

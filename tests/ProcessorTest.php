@@ -19,12 +19,12 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
     {
         chdir(__DIR__);
 
-        $this->file = $this->getMockBuilder(Env::class)
+        $this->file = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Env')
             ->setConstructorArgs(array('file.env'))
             ->getMock();
-        $this->composerIO = $this->getMockBuilder(IOInterface::class)
+        $this->composerIO = $this->getMockBuilder('Composer\IO\IOInterface')
             ->getMock();
-        $this->fileFactory = $this->getMockBuilder(FileFactory::class)
+        $this->fileFactory = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Factory\FileFactory')
             ->getMock();
     }
 
