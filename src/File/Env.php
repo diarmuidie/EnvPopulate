@@ -69,6 +69,10 @@ class Env implements FileInterface
             return $value;
         }
 
+        if (empty($value)) {
+            return '';
+        }
+
         $singelAndDoubleQuotes = '"\'';
 
         return '"' . trim($value, $singelAndDoubleQuotes) . '"';

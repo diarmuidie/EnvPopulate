@@ -67,7 +67,9 @@ class EnvTest extends PHPUnit_Framework_TestCase
             array(123, 123),
             array("string", '"string"'),
             array('string', '"string"'),
-            array(1.234, '"1.234"')
+            array(1.234, '"1.234"'),
+            array('', ''),
+            array(null, '')
         );
     }
 }
