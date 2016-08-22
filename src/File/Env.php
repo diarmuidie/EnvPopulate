@@ -6,7 +6,7 @@ use M1\Env\Parser;
 
 class Env implements FileInterface
 {
-    const FILE_HEADER = "# This file is auto-generated during the composer install\n# Change will be overwritten";
+    const FILE_HEADER = "# This file is auto-generated during the composer install\n# Changes will be overwritten";
 
     protected $envValues = array();
     protected $filename;
