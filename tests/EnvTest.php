@@ -2,10 +2,10 @@
 
 namespace Diarmuidie\EnvPopulate\Tests;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Diarmuidie\EnvPopulate\File\Env;
 
-class EnvTest extends TestCase
+class EnvTest extends PHPUnit_Framework_TestCase
 {
     protected $env;
 

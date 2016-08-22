@@ -3,13 +3,13 @@
 namespace Diarmuidie\EnvPopulate\Tests;
 
 use Diarmuidie\EnvPopulate\Processor;
-use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Composer\IO\IOInterface;
 use Diarmuidie\EnvPopulate\File\Factory\FileFactory;
 use Diarmuidie\EnvPopulate\File\Env;
 use InvalidArgumentException;
 
-class ProcessorTest extends TestCase
+class ProcessorTest extends PHPUnit_Framework_TestCase
 {
     protected $file;
     protected $composerIO;
@@ -43,7 +43,7 @@ class ProcessorTest extends TestCase
         $this->fileFactory->method('create')
             ->willReturn($this->file);
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->setExpectedException(InvalidArgumentException::class);
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());
