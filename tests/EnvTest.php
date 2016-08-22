@@ -59,15 +59,15 @@ class EnvTest extends PHPUnit_Framework_TestCase
 
     public function variableProvider()
     {
-        return [
-            [true, 'true'],
-            [false, 'false'],
-            ['true', 'true'],
-            ['false', 'false'],
-            [123, 123],
-            ["string", '"string"'],
-            ['string', '"string"'],
-            [1.234, '"1.234"']
-        ];
+        return array(
+            array(true, 'true'),
+            array(false, 'false'),
+            array('true', 'true'),
+            array('false', 'false'),
+            array(123, 123),
+            array("string", '"string"'),
+            array('string', '"string"'),
+            array(1.234, '"1.234"')
+        );
     }
 }
