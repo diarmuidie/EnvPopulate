@@ -4,7 +4,7 @@
     "type": "library",
     "keywords": ["parameters management", "dotenv", "env", ".env", "environment"],
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.3",
         "m1/env": "^2.0"
     },
     "require-dev": {
