@@ -32,7 +32,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
     {
         $processor = new Processor($this->composerIO, $this->fileFactory);
 
-        $this->assertInstanceOf(Processor::class, $processor);
+        $this->assertInstanceOf('Diarmuidie\EnvPopulate\Processor', $processor);
     }
 
     public function testThrowsExceptionForMissingExampleFile()
@@ -43,7 +43,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
         $this->fileFactory->method('create')
             ->willReturn($this->file);
 
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException('InvalidArgumentException');
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());
@@ -82,7 +82,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
         $exampleFile->method('getVariables')
             ->willReturn(array('VALUE_1' => true));
 
-        $generatedFile = $this->getMockBuilder(Env::class)
+        $generatedFile = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Env')
             ->setConstructorArgs(array('file.env'))
             ->getMock();
         $generatedFile->expects($this->once())
