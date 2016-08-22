@@ -3,13 +3,13 @@
 namespace Diarmuidie\EnvPopulate\Tests;
 
 use Diarmuidie\EnvPopulate\Processor;
-use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Composer\IO\IOInterface;
 use Diarmuidie\EnvPopulate\File\Factory\FileFactory;
 use Diarmuidie\EnvPopulate\File\Env;
 use InvalidArgumentException;
 
-class ProcessorTest extends TestCase
+class ProcessorTest extends PHPUnit_Framework_TestCase
 {
     protected $file;
     protected $composerIO;
@@ -19,12 +19,12 @@ class ProcessorTest extends TestCase
     {
         chdir(__DIR__);
 
-        $this->file = $this->getMockBuilder(Env::class)
+        $this->file = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Env')
             ->setConstructorArgs(array('file.env'))
             ->getMock();
-        $this->composerIO = $this->getMockBuilder(IOInterface::class)
+        $this->composerIO = $this->getMockBuilder('Composer\IO\IOInterface')
             ->getMock();
-        $this->fileFactory = $this->getMockBuilder(FileFactory::class)
+        $this->fileFactory = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Factory\FileFactory')
             ->getMock();
     }
 
@@ -32,7 +32,7 @@ class ProcessorTest extends TestCase
     {
         $processor = new Processor($this->composerIO, $this->fileFactory);
 
-        $this->assertInstanceOf(Processor::class, $processor);
+        $this->assertInstanceOf('Diarmuidie\EnvPopulate\Processor', $processor);
     }
 
     public function testThrowsExceptionForMissingExampleFile()
@@ -43,7 +43,7 @@ class ProcessorTest extends TestCase
         $this->fileFactory->method('create')
             ->willReturn($this->file);
 
-        $this->expectException(InvalidArgumentException::class);
+        $this->setExpectedException('InvalidArgumentException');
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());
@@ -82,7 +82,7 @@ class ProcessorTest extends TestCase
         $exampleFile->method('getVariables')
             ->willReturn(array('VALUE_1' => true));
 
-        $generatedFile = $this->getMockBuilder(Env::class)
+        $generatedFile = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Env')
             ->setConstructorArgs(array('file.env'))
             ->getMock();
         $generatedFile->expects($this->once())
