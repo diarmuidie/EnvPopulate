@@ -58,6 +58,13 @@ See it in action:
 
 [![asciicast](https://asciinema.org/a/7tkeaspz0wqahr314p7khlehh.png)](https://asciinema.org/a/7tkeaspz0wqahr314p7khlehh)
 
+#### Disabling in Automated Environments
+
+You can disable the EnvPopulate script in automated environments (CI Server like Travis or Jenkins for example). You have two options to do this:
+
+- Run composer with `--noscripts` option. This will stop any scripts from being run (including EnvPopulate).
+
+- Run Composer in non interactive mode (`--no-interaction`). This will cause EnvPopulate to take the default values from `.env.example`, when generating the `.env` file, without asking for user input.
 
 To Do
 ---------
