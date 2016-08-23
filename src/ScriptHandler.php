@@ -8,7 +8,7 @@ use Composer\Script\Event;
 
 class ScriptHandler
 {
-    const EXTRA_KEY = 'env-process';
+    const EXTRA_KEY = 'env-populate';
 
     public static function populateEnv(Event $event)
     {

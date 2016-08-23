@@ -11,7 +11,7 @@
         ]
     },
     "extra": {
-        "env-process": {
+        "env-populate": {
             "example-file": ".env.dist",
             "generated-file": ".env"
         }

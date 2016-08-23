@@ -39,7 +39,7 @@ To trigger the EnvPopulate script on composer install and updates you have to ad
 If you want to change the location of the example or generated env file you can also add an extra section to the `composer.json` file:
 ```JSON
 "extra": {
-    "env-process": {
+    "env-populate": {
         "example-file": "app/.env.dist",
         "generated-file": "app/.env"
     }
