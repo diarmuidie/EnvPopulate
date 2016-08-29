@@ -30,7 +30,7 @@ class Processor
         $this->loadFiles();
         $unsetValues = $this->findUnsetValues();
         if (!empty($unsetValues)) {
-            $this->askForUnsetValues($unsetValues);
+            $this->getUnsetValues($unsetValues);
             $this->saveFile();
         }
     }
@@ -69,16 +69,18 @@ class Processor
         return array_keys($unsetEnvValues);
     }
 
-    protected function askForUnsetValues(array $unsetValues)
+    protected function getUnsetValues(array $unsetValues)
+    {
+        if ($this->io->isInteractive()) {
+            $this->interactiveGetUnsetValues($unsetValues);
+        } else {
+            $this->nonInteractiveGetUnsetValues($unsetValues);
+        }
+    }
+
+    protected function interactiveGetUnsetValues(array $unsetValues)
     {
         $exampleValues = $this->exampleFile->getVariables();
-
-        if (!$this->io->isInteractive()) {
-            foreach ($exampleValues as $key => $value) {
-                $this->generatedFile->setVariable($key, $value);
-            }
-            return;
-        }
 
         $isStarted = false;
         foreach ($unsetValues as $key) {
@@ -97,6 +99,15 @@ class Processor
                 $default
             );
             $this->generatedFile->setVariable($key, $value);
+        }
+    }
+
+    protected function nonInteractiveGetUnsetValues(array $unsetValues)
+    {
+        $exampleValues = $this->exampleFile->getVariables();
+
+        foreach ($unsetValues as $key) {
+            $this->generatedFile->setVariable($key, $exampleValues[$key]);
         }
     }
 

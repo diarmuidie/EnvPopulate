@@ -71,6 +71,48 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
         $processor->processFile(array());
     }
 
+    public function testDoesntAskForValueIfNotInInteractiveMode()
+    {
+
+        $exampleFile = $this->file;
+
+        $exampleFile->expects($this->once())
+            ->method('fileExists')
+            ->willReturn(true);
+        $exampleFile->method('getVariables')
+            ->willReturn(array('VALUE_1' => true));
+
+        $generatedFile = $this->getMockBuilder('Diarmuidie\EnvPopulate\File\Env')
+            ->setConstructorArgs(array('file.env'))
+            ->getMock();
+        $generatedFile->expects($this->once())
+            ->method('fileExists')
+            ->willReturn(false);
+        $generatedFile->method('getVariables')
+            ->willReturn(array());
+        $generatedFile->expects($this->once())
+            ->method('setVariable')
+            ->with(
+                $this->equalTo('VALUE_1'),
+                $this->equalTo(true)
+            );
+        $generatedFile->expects($this->once())
+            ->method('save');
+
+        $this->fileFactory->method('create')
+            ->will($this->onConsecutiveCalls($exampleFile, $generatedFile));
+
+        $this->composerIO
+            ->method('isInteractive')
+            ->willReturn(false);
+        $this->composerIO->expects($this->never())
+            ->method('write');
+
+        $processor = new Processor($this->composerIO, $this->fileFactory);
+        $processor->processFile(array());
+
+    }
+
     public function testAsksForValueIfValueNeedsToBeUpdated()
     {
 
