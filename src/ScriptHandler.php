@@ -19,6 +19,13 @@ class ScriptHandler
             $config = $extras[self::EXTRA_KEY];
         }
 
+        if (isset($config['run-non-interactively'])
+            && !$config['run-non-interactively']
+            && !$event->getIO()->isInteractive()
+        ) {
+            return;
+        }
+
         $envFileFactory = new EnvFactory();
 
         $processor = new Processor($event->getIO(), $envFileFactory);

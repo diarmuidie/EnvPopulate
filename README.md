@@ -46,6 +46,15 @@ If you want to change the location of the example or generated env file you can 
 }
 ```
 
+You can also specify if you want to not run the env populate scripts when in non-interactive mode (automated systems):
+```JSON
+"extra": {
+    "env-populate": {
+        "run-non-interactively": false
+    }
+}
+```
+
 
 Usage
 -----

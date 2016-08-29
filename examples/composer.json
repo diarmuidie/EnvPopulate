@@ -13,7 +13,8 @@
     "extra": {
         "env-populate": {
             "example-file": ".env.dist",
-            "generated-file": ".env"
+            "generated-file": ".env",
+            "run-non-interactively": false
         }
     }
 }
