@@ -110,7 +110,6 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
         $processor->processFile(array());
-
     }
 
     public function testAsksForValueIfValueNeedsToBeUpdated()
