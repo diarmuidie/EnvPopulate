@@ -14,12 +14,13 @@ php:
   - 7.0
 
 matrix:
-  - php: hhvm
-    dist: trusty
-    group: stable
-  - php: 5.3
-    dist: precise
-    group: stable
+  include:
+    - php: hhvm
+      dist: trusty
+      group: stable
+    - php: 5.3
+      dist: precise
+      group: stable
 
 cache:
   directories:
