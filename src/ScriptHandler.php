@@ -29,6 +29,15 @@ class ScriptHandler
         $envFileFactory = new EnvFactory();
 
         $processor = new Processor($event->getIO(), $envFileFactory);
+
+        if (!isset($config['example-file'])) {
+            foreach ($config as $file) {
+                $processor->processFile($file);
+            }
+
+            return;
+        }
+
         $processor->processFile($config);
     }
 }
