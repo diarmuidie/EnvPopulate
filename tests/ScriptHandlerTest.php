@@ -24,23 +24,23 @@ class ScriptHandlerTest extends TestCase
      */
     public function testSingleFileConfiguration(array $extras)
     {
-        $package = $this->getClassMock(RootPackageInterface::class);
+        $package = $this->getClassMock('\Composer\Package\RootPackageInterface');
         $package->expects($this->once())
             ->method('getExtra')
             ->willReturn($extras);
 
-        $composer = $this->getClassMock(Composer::class);
+        $composer = $this->getClassMock('\Composer\Composer');
         $composer->expects($this->once())
             ->method('getPackage')
             ->willReturn($package);
 
-        $event = $this->getClassMock(Event::class);
+        $event = $this->getClassMock('\Composer\Script\Event');
         $event->expects($this->once())
             ->method('getComposer')
             ->willReturn($composer);
         $event->expects($this->once())
             ->method('getIo')
-            ->willReturn($this->getClassMock(IOInterface::class));
+            ->willReturn($this->getClassMock('\Composer\IO\IOInterface'));
 
         ScriptHandler::populateEnv($event);
     }
@@ -65,23 +65,23 @@ class ScriptHandlerTest extends TestCase
      */
     public function testMultipleFilesConfiguration(array $extras)
     {
-        $package = $this->getClassMock(RootPackageInterface::class);
+        $package = $this->getClassMock('\Composer\Package\RootPackageInterface');
         $package->expects($this->once())
             ->method('getExtra')
             ->willReturn($extras);
 
-        $composer = $this->getClassMock(Composer::class);
+        $composer = $this->getClassMock('\Composer\Composer');
         $composer->expects($this->once())
             ->method('getPackage')
             ->willReturn($package);
 
-        $event = $this->getClassMock(Event::class);
+        $event = $this->getClassMock('\Composer\Script\Event');
         $event->expects($this->once())
             ->method('getComposer')
             ->willReturn($composer);
         $event->expects($this->once())
             ->method('getIo')
-            ->willReturn($this->getClassMock(IOInterface::class));
+            ->willReturn($this->getClassMock('\Composer\IO\IOInterface'));
 
         ScriptHandler::populateEnv($event);
     }
