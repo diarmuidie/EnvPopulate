@@ -47,16 +47,16 @@ class ScriptHandlerTest extends TestCase
 
     public function singleFileExtrasProvider()
     {
-        return [
-            [
-                [
-                    ScriptHandler::EXTRA_KEY => [
+        return array(
+            array(
+                array(
+                    ScriptHandler::EXTRA_KEY => array(
                         'example-file' => 'tests/fixtures/example.env',
                         'generated-file' => 'tests/fixtures/output.env'
-                    ]
-                ]
-            ]
-        ];
+                    )
+                )
+            )
+        );
     }
 
     /**
@@ -88,29 +88,29 @@ class ScriptHandlerTest extends TestCase
 
     public function multipleFilesExtrasProvider()
     {
-        return [
-            [
-                [
-                    ScriptHandler::EXTRA_KEY => [
-                        [
+        return array(
+            array(
+                array(
+                    ScriptHandler::EXTRA_KEY => array(
+                        array(
                             'example-file' => 'tests/fixtures/example.env',
                             'generated-file' => 'tests/fixtures/output.env'
-                        ]
-                    ]
-                ],
-                [
-                    ScriptHandler::EXTRA_KEY => [
-                        [
+                        )
+                    )
+                ),
+                array(
+                    ScriptHandler::EXTRA_KEY => array(
+                        array(
                             'example-file' => 'tests/fixtures/example.env',
                             'generated-file' => 'tests/fixtures/output.env'
-                        ],
-                        [
+                        ),
+                        array(
                             'example-file' => 'tests/fixtures/example.env',
                             'generated-file' => 'tests/fixtures/output.env'
-                        ]
-                    ]
-                ]
-            ]
-        ];
+                        )
+                    )
+                )
+            )
+        );
     }
 }
