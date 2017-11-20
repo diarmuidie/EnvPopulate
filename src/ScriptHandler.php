@@ -36,8 +36,6 @@ class ScriptHandler
                 $processor->processFile($file['example-file'], $file['generated-file']);
             }
         } else {
-            var_dump(self::getExampleFile($config),
-            self::getGeneratedFile($config));
             # Process legacy config file
             $processor->processFile(
                 self::getExampleFile($config),
@@ -46,14 +44,16 @@ class ScriptHandler
         }
     }
 
-    private static function getExampleFile($config) {
+    private static function getExampleFile($config)
+    {
         if (!empty($config['example-file'])) {
             return $config['example-file'];
         }
         return self::DEFAULT_EXAMPLE_FILE;
     }
 
-    private static function getGeneratedFile($config) {
+    private static function getGeneratedFile($config)
+    {
         if (!empty($config['generated-file'])) {
             return $config['generated-file'];
         }
