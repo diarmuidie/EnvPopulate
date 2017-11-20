@@ -2,7 +2,6 @@
 
 namespace Diarmuidie\EnvPopulate;
 
-use Diarmuidie\EnvPopulate\Processor;
 use Diarmuidie\EnvPopulate\File\Factory\EnvFactory;
 use Composer\Script\Event;
 
@@ -30,8 +29,8 @@ class ScriptHandler
 
         $processor = new Processor($event->getIO(), $envFileFactory);
 
-        if (!isset($config['example-file'])) {
-            foreach ($config as $file) {
+        if (isset($config['files']) && is_array($config['files'])) {
+            foreach ($config['files'] as $file) {
                 $processor->processFile($file);
             }
 

@@ -92,21 +92,25 @@ class ScriptHandlerTest extends TestCase
             array(
                 array(
                     ScriptHandler::EXTRA_KEY => array(
-                        array(
-                            'example-file' => 'tests/fixtures/example.env',
-                            'generated-file' => 'tests/fixtures/output.env'
+                        'files' => array(
+                            array(
+                                'example-file' => 'tests/fixtures/example.env',
+                                'generated-file' => 'tests/fixtures/output.env'
+                            )
                         )
                     )
                 ),
                 array(
                     ScriptHandler::EXTRA_KEY => array(
-                        array(
-                            'example-file' => 'tests/fixtures/example.env',
-                            'generated-file' => 'tests/fixtures/output.env'
-                        ),
-                        array(
-                            'example-file' => 'tests/fixtures/example.env',
-                            'generated-file' => 'tests/fixtures/output.env'
+                        'files' => array(
+                            array(
+                                'example-file' => 'tests/fixtures/example.env',
+                                'generated-file' => 'tests/fixtures/output.env'
+                            ),
+                            array(
+                                'example-file' => 'tests/fixtures/example.env',
+                                'generated-file' => 'tests/fixtures/output.env'
+                            )
                         )
                     )
                 )
