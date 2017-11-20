@@ -5,6 +5,7 @@ namespace Diarmuidie\EnvPopulate\File;
 interface FileInterface
 {
     public function __construct($filename);
+    public function getFilename();
     public function fileExists();
     public function load();
     public function getVariables();

@@ -13,7 +13,7 @@ class Processor
     protected $exampleFile;
     protected $generatedFile;
 
-    protected $config = array(
+    protected $defaultConfig = array(
         'example-file' => '.env.example',
         'generated-file' => '.env'
     );
@@ -26,8 +26,13 @@ class Processor
 
     public function processFile(array $config)
     {
-        $this->processConfig($config);
-        $this->loadFiles();
+        $procesedConfig = $this->processConfig($config);
+
+        $this->loadFiles(
+            $procesedConfig['example-file'],
+            $procesedConfig['generated-file']
+        );
+
         $unsetValues = $this->findUnsetValues();
         if (!empty($unsetValues)) {
             $this->getUnsetValues($unsetValues);
@@ -37,23 +42,23 @@ class Processor
 
     protected function processConfig($config)
     {
-        $this->config = array_merge($this->config, $config);
+        return array_merge($this->defaultConfig, $config);
     }
 
-    protected function loadFiles()
+    protected function loadFiles($exampleFile, $generateFile)
     {
-        $this->exampleFile = $this->fileFactory->create($this->config['example-file']);
+        $this->exampleFile = $this->fileFactory->create($exampleFile);
         if (!$this->exampleFile->fileExists()) {
             throw new \InvalidArgumentException(
                 sprintf(
                     'The example env file "%s" does not exist. Check your example-file config or create it.',
-                    $this->config['example-file']
+                    $exampleFile
                 )
             );
         }
         $this->exampleFile->load();
 
-        $this->generatedFile = $this->fileFactory->create($this->config['generated-file']);
+        $this->generatedFile = $this->fileFactory->create($generateFile);
         if ($this->generatedFile->fileExists()) {
             $this->generatedFile->load();
         }
@@ -88,7 +93,7 @@ class Processor
                 $isStarted = true;
                 $this->io->write(
                     '<comment>Some parameters are missing from '
-                    . $this->config['generated-file']
+                    . $this->generatedFile->getFilename()
                     . '. Please provide them.</comment>'
                 );
             }

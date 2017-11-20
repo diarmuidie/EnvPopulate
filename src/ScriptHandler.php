@@ -33,10 +33,9 @@ class ScriptHandler
             foreach ($config['files'] as $file) {
                 $processor->processFile($file);
             }
-
-            return;
+        } else {
+            # Process legacy config file
+            $processor->processFile($config);
         }
-
-        $processor->processFile($config);
     }
 }

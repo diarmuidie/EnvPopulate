@@ -15,6 +15,11 @@ class EnvTest extends PHPUnit_Framework_TestCase
         $this->env = new Env('fixtures/example.env');
     }
 
+    public function testGettingFilename()
+    {
+        $this->assertEquals("fixtures/example.env", $this->env->getFilename());
+    }
+
     public function testLoadingEnvFile()
     {
         $this->env->load();

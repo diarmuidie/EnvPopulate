@@ -16,6 +16,11 @@ class Env implements FileInterface
         $this->filename = $filename;
     }
 
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
     public function fileExists()
     {
         return is_file($this->filename);
