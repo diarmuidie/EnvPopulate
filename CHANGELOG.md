@@ -9,3 +9,7 @@ Changelog
 
 - Remove composer lock file
 - Minor tidy up
+
+### Version 1.0.2 (20 Nov 2017)
+
+- Add ability to specify multiple env files
