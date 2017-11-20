@@ -12,8 +12,16 @@
     },
     "extra": {
         "env-populate": {
-            "example-file": ".env.dist",
-            "generated-file": ".env",
+            "files": [
+                {
+                    "example-file": ".env.server.dist",
+                    "generated-file": ".env.server"
+                },
+                {
+                    "example-file": ".env.dist",
+                    "generated-file": ".env"
+                }
+            ],
             "run-non-interactively": false
         }
     }

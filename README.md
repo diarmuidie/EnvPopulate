@@ -40,8 +40,16 @@ If you want to change the location of the example or generated env file you can 
 ```JSON
 "extra": {
     "env-populate": {
-        "example-file": "app/.env.dist",
-        "generated-file": "app/.env"
+        "files": [
+            {
+                "example-file": ".env.server.dist",
+                "generated-file": ".env.server"
+            },
+            {
+                "example-file": ".env.dist",
+                "generated-file": ".env"
+            }
+        ]
     }
 }
 ```

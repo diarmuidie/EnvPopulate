@@ -1,0 +1,6 @@
+.env*
+!.env.dist
+!.env.server.dist
+
+composer.lock
+vendor/
