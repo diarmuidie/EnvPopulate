@@ -2,10 +2,6 @@
 
 namespace Diarmuidie\EnvPopulate\Tests;
 
-use Composer\Composer;
-use Composer\IO\IOInterface;
-use Composer\Package\RootPackageInterface;
-use Composer\Script\Event;
 use Diarmuidie\EnvPopulate\ScriptHandler;
 use PHPUnit\Framework\TestCase;
 
@@ -116,5 +112,40 @@ class ScriptHandlerTest extends TestCase
                 )
             )
         );
+    }
+
+    public function testNonInteractivity()
+    {
+        $extras = array(
+            ScriptHandler::EXTRA_KEY => array(
+                'run-non-interactively' => false
+            )
+        );
+
+        $package = $this->getClassMock('\Composer\Package\RootPackageInterface');
+        $package->expects($this->once())
+            ->method('getExtra')
+            ->willReturn($extras);
+
+        $composer = $this->getClassMock('\Composer\Composer');
+        $composer->expects($this->once())
+            ->method('getPackage')
+            ->willReturn($package);
+
+        $event = $this->getClassMock('\Composer\Script\Event');
+        $event->expects($this->once())
+            ->method('getComposer')
+            ->willReturn($composer);
+
+        $io = $this->getClassMock('\Composer\IO\IOInterface');
+        $io->expects($this->once())
+            ->method('isInteractive')
+            ->willReturn(false);
+
+        $event->expects($this->once())
+            ->method('getIo')
+            ->willReturn($io);
+
+        ScriptHandler::populateEnv($event);
     }
 }
