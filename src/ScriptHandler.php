@@ -8,6 +8,8 @@ use Composer\Script\Event;
 class ScriptHandler
 {
     const EXTRA_KEY = 'env-populate';
+    const DEFAULT_EXAMPLE_FILE = '.env.example';
+    const DEFAULT_GENERATED_FILE = '.env';
 
     public static function populateEnv(Event $event)
     {
@@ -31,11 +33,30 @@ class ScriptHandler
 
         if (isset($config['files']) && is_array($config['files'])) {
             foreach ($config['files'] as $file) {
-                $processor->processFile($file);
+                $processor->processFile($file['example-file'], $file['generated-file']);
             }
         } else {
+            var_dump(self::getExampleFile($config),
+            self::getGeneratedFile($config));
             # Process legacy config file
-            $processor->processFile($config);
+            $processor->processFile(
+                self::getExampleFile($config),
+                self::getGeneratedFile($config)
+            );
         }
+    }
+
+    private static function getExampleFile($config) {
+        if (!empty($config['example-file'])) {
+            return $config['example-file'];
+        }
+        return self::DEFAULT_EXAMPLE_FILE;
+    }
+
+    private static function getGeneratedFile($config) {
+        if (!empty($config['generated-file'])) {
+            return $config['generated-file'];
+        }
+        return self::DEFAULT_GENERATED_FILE;
     }
 }

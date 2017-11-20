@@ -46,7 +46,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
         $this->setExpectedException('InvalidArgumentException');
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
-        $processor->processFile(array());
+        $processor->processFile('example.file', 'generated.file');
     }
 
     public function testDoesWriteOutputIfNoValueNeedsToBeUpdated()
@@ -68,7 +68,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
             ->method('write');
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
-        $processor->processFile(array());
+        $processor->processFile('example.file', 'generated.file');
     }
 
     public function testDoesntAskForValueIfNotInInteractiveMode()
@@ -109,7 +109,7 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
             ->method('write');
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
-        $processor->processFile(array());
+        $processor->processFile('example.file', 'generated.file');
     }
 
     public function testAsksForValueIfValueNeedsToBeUpdated()
@@ -147,6 +147,6 @@ class ProcessorTest extends PHPUnit_Framework_TestCase
             ->with($this->equalTo('<question>VALUE_1</question> (<comment>true</comment>): '));
 
         $processor = new Processor($this->composerIO, $this->fileFactory);
-        $processor->processFile(array());
+        $processor->processFile('example.file', 'generated.file');
     }
 }

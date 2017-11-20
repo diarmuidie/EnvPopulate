@@ -13,25 +13,15 @@ class Processor
     protected $exampleFile;
     protected $generatedFile;
 
-    protected $defaultConfig = array(
-        'example-file' => '.env.example',
-        'generated-file' => '.env'
-    );
-
     public function __construct(IOInterface $io, FileFactory $fileFactory)
     {
         $this->io = $io;
         $this->fileFactory = $fileFactory;
     }
 
-    public function processFile(array $config)
+    public function processFile($exampleFile, $generatedFile)
     {
-        $procesedConfig = $this->processConfig($config);
-
-        $this->loadFiles(
-            $procesedConfig['example-file'],
-            $procesedConfig['generated-file']
-        );
+        $this->loadFiles($exampleFile, $generatedFile);
 
         $unsetValues = $this->findUnsetValues();
         if (!empty($unsetValues)) {
@@ -40,12 +30,7 @@ class Processor
         }
     }
 
-    protected function processConfig($config)
-    {
-        return array_merge($this->defaultConfig, $config);
-    }
-
-    protected function loadFiles($exampleFile, $generateFile)
+    protected function loadFiles($exampleFile, $generatedFile)
     {
         $this->exampleFile = $this->fileFactory->create($exampleFile);
         if (!$this->exampleFile->fileExists()) {
@@ -58,7 +43,7 @@ class Processor
         }
         $this->exampleFile->load();
 
-        $this->generatedFile = $this->fileFactory->create($generateFile);
+        $this->generatedFile = $this->fileFactory->create($generatedFile);
         if ($this->generatedFile->fileExists()) {
             $this->generatedFile->load();
         }
