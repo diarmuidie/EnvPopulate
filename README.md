@@ -9,7 +9,6 @@ Developed by [Diarmuid](https://diarmuid.ie/).
 
 [![Latest Stable Version](https://poser.pugx.org/diarmuidie/envpopulate/v/stable)](https://packagist.org/packages/diarmuidie/envpopulate)
 [![License](https://poser.pugx.org/diarmuidie/envpopulate/license)](https://packagist.org/packages/diarmuidie/envpopulate)
-[![Build Status](https://travis-ci.org/diarmuidie/EnvPopulate.svg)](https://travis-ci.org/diarmuidie/EnvPopulate)
 
 Installation
 ------------
