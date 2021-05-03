@@ -1,6 +1,6 @@
 {
     "require": {
-        "diarmuidie/envpopulate": "^1.0"
+        "diarmuidie/envpopulate": "^2.0"
     },
     "scripts": {
         "post-install-cmd": [

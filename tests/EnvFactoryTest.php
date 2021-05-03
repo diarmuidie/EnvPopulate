@@ -2,11 +2,11 @@
 
 namespace Diarmuidie\EnvPopulate\Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Diarmuidie\EnvPopulate\File\Factory\EnvFactory;
 use Diarmuidie\EnvPopulate\File\Env;
 
-class EnvFactoryTest extends PHPUnit_Framework_TestCase
+class EnvFactoryTest extends TestCase
 {
     public function testFactoryReturnsEnvClass()
     {

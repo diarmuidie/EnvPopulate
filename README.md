@@ -113,7 +113,7 @@ See the [CHANGELOG.md](https://github.com/diarmuidie/EnvPopulate/blob/master/CHA
 Authors
 -------
 
-- [Diarmuid](http://diarmuid.ie) ([Twitter](http://twitter.com/diarmuidie))
+- [Diarmuid](http://diarmuid.ie)
 
 
 License
