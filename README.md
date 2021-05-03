@@ -83,10 +83,6 @@ You can disable the EnvPopulate script in automated environments (CI Server like
 
 - Run Composer in non interactive mode (`--no-interaction`). This will cause EnvPopulate to take the default values from `.env.example`, when generating the `.env` file, without asking for user input.
 
-To Do
----------
-- [x] Increase test coverage.
-
 Contributing
 ---------
 
@@ -98,6 +94,16 @@ Feel free to contribute features, bug fixes or just helpful advice :smile:
 ...
 4. Profit :sunglasses:
 
+## Running Tests
+You can run the tests through Docker:
+
+```
+# Build the dockerfile:
+$ docker build . --tag envpopulate:latest
+
+# Run the tests
+$ docker run envpopulate:latest composer run-script test
+```
 
 Changelog
 ---------

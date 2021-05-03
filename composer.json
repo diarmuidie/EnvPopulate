@@ -23,5 +23,13 @@
         "psr-4": {
             "Diarmuidie\\EnvPopulate\\": "src/"
         }
+    },
+    "scripts": {
+        "test": [
+            "@lint",
+            "@unittest"
+        ],
+        "unittest": "phpunit --coverage-text",
+        "lint": "phpcs"
     }
 }
