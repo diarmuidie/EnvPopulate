@@ -13,3 +13,7 @@ Changelog
 ### Version 1.2.0 (20 Nov 2017)
 
 - Add ability to specify multiple env files
+
+### Version 1.2.1 (3 May 2021)
+
+- Bump composer version to address CVE-2021-29472
