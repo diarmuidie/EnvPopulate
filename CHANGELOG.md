@@ -17,3 +17,8 @@ Changelog
 ### Version 1.2.1 (3 May 2021)
 
 - Bump composer version to address CVE-2021-29472
+
+### Version 2.0.0 (3 May 2021)
+
+- Add PHP 8.0 support
+- Drop support for PHP < 7.3

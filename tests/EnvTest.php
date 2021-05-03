@@ -2,14 +2,14 @@
 
 namespace Diarmuidie\EnvPopulate\Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Diarmuidie\EnvPopulate\File\Env;
 
-class EnvTest extends PHPUnit_Framework_TestCase
+class EnvTest extends TestCase
 {
     protected $env;
 
-    public function setUp()
+    protected function setUp(): void
     {
         chdir(__DIR__);
         $this->env = new Env('fixtures/example.env');
